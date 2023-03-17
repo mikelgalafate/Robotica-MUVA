@@ -8,4 +8,5 @@ It is based on the PID controller where PDI stands for:
 - Integral: $u = -K_i\cdot \int e(t)dt$
 
 The formula for the PID is:
+
 $$u = -K_pe-K_i\int_0^tedt-K_dde/dt$$
