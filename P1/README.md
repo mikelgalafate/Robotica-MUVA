@@ -1,6 +1,6 @@
 ## Follow Line
 
-This is the <a href="https://unibotics.org/academy/exercise/follow_line/">Follow Line</a> exercise from <a href="https://unibotics.org/academy/main">Unibotics</a> about creating a program that follows the red line in an F1 circuit.
+This is the <a href="https://unibotics.org/academy/exercise/follow_line/">Follow Line</a> exercise from <a href="https://unibotics.org/academy/main">Unibotics</a> by <a href="https://jderobot.github.io/">JdeRobot</a> about creating a program that follows the red line in an F1 circuit.
 
 It is based on the PID controller where PDI stands for:
 - Proportional: $u = -K_pe$
