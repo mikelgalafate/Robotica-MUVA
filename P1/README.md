@@ -5,8 +5,8 @@ This is the <a href="https://unibotics.org/academy/exercise/follow_line/">Follow
 It is based on the PID controller where PDI stands for:
 - Proportional: $u = -K_pe$
 - Derivative: $u = -K_d\cdot \frac{de}{dt}$
-- Integral: $u = -K_i\cdot \int e(t)dt$
+- Integral: $u = -K_i\cdot \int_0^t e(t)dt$
 
 The formula for the PID is:
 
-$$u = -K_pe-K_i\cdot \int e(t)dt-K_d\cdot \frac{de}{dt}$$
+$$u = -K_pe-K_i\cdot \int_0^t e(t)dt-K_d\cdot \frac{de}{dt}$$
