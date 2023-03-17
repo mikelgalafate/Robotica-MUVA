@@ -9,4 +9,4 @@ It is based on the PID controller where PDI stands for:
 
 The formula for the PID is:
 
-$$u = -K_pe-K_i\int_0^tedt-K_dde/dt$$
+$$u = -K_pe-K_i\cdot \int e(t)dt-K_d\cdot \frac{de}{dt}$$
