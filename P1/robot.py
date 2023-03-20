@@ -12,9 +12,11 @@ thickness =  1
 
 errors = np.zeros((1, 15))
 
-K_P = 0
-K_I = 0
-K_D = 0
+K_P = 10.5e-3
+K_I = 1.5e-4
+K_D = 12.5e-3
+V_MAX = 10
+
 
 FILTRO1 = np.array([[0, 100, 20],[10, 255, 255]])
 FILTRO2 = np.array([[160, 50, 50],[180, 255, 255]])
@@ -56,7 +58,8 @@ while True:
         errors[0,0] = e
         up = - K_P * e
         ui = - K_I * np.sum(errors)
-        u = up + ui
+        ud = - K_D *(e - errors[0,1]) 
+        u = up + ui + ud
         v = 1/(1+np.abs(u*1.5)) * V_MAX
         HAL.setV(v)
         HAL.setW(u)
@@ -65,6 +68,8 @@ while True:
         cv2.circle(im,(a,start), 1, [0, 255, 0], 2)
         cv2.putText(im, f"Up = {up:+.4f} ({np.abs(up)/np.abs(u)*100:.1f}%)", (20,20), font, fontScale, color, thickness, cv2.LINE_AA)
         cv2.putText(im, f"Ui = {ui:+.4f} ({np.abs(ui)/np.abs(u)*100:.1f}%)", (20,20 + 10 + textSize), font, fontScale, color, thickness, cv2.LINE_AA)
+        cv2.putText(im, f"Ud = {ud:+.4f} ({np.abs(ud)/np.abs(u)*100:.1f}%)", (20,20 + 20 + textSize * 2), font, fontScale, color, thickness, cv2.LINE_AA)
         cv2.putText(im, f"U = {u:+.4f}", (20,20 + 30 + textSize * 3), font, fontScale, color, thickness, cv2.LINE_AA)
         cv2.putText(im, f"V = {v:+.4f}", (20,20 + 40 + textSize * 4), font, fontScale, color, thickness, cv2.LINE_AA)
+        
     GUI.showImage(im)
