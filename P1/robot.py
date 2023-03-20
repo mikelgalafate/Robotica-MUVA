@@ -33,4 +33,17 @@ while True:
     index = np.argsort(values[:,cv2.CC_STAT_AREA])[-2]
     mask = (label_ids == index).astype(np.dtype("uint8")) * 255
     
-    GUI.showImage(mask)
+    moment = cv2.moments(mask)
+    if moment["m00"] != 0:
+        center_coordinates = (int(moment["m10"]/moment["m00"]),int(moment["m01"]/moment["m00"]))
+        cv2.circle(im, center_coordinates, 1, [0,255,0], 5)
+        e = 329 - center_coordinates[0]
+        u = e*Kp
+        HAL.setV(2)
+        HAL.setW(u)
+    else:
+        center_coordinates = (0,0)
+        HAL.setV(0)
+        HAL.setW(0.5)
+    cv2.line(im, (int(im.shape[1]/2),0), (int(im.shape[1]/2),im.shape[0]-1), [255,0,0], 2)
+    GUI.showImage(im)
