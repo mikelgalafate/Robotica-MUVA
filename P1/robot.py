@@ -39,7 +39,7 @@ while True:
         cv2.circle(im, center_coordinates, 1, [0,255,0], 5)
         e = 329 - center_coordinates[0]
         u = e*Kp
-        HAL.setV(2)
+        HAL.setV(1/(1+np.abs(u*1.5))*v)
         HAL.setW(u)
     else:
         center_coordinates = (0,0)
