@@ -9,7 +9,8 @@ def get_chessboard_points(chessboard_shape, dx, dy):
             for i in range(chessboard_shape[1])
             for j in range(chessboard_shape[0])]
 
-def default_camera_calibration_images():
+
+def default_camera_calibration_images(cam):
     print("Images are required for default camera calibration")
     print("\tPlease, place the OpenCV 9x6 Chessboard in the camera")
     print("\t\tChessboard must be in a 25mm/side size")
@@ -21,7 +22,7 @@ def default_camera_calibration_images():
     print("#######################################################################################")
     print("#######################################################################################")
     calib_images = []
-    cap = cv2.VideoCapture(0)
+    cap = cv2.VideoCapture(cam)
     while cap.isOpened() and len(calib_images) < 12:
         ret, frame = cap.read()
         cv2.imshow("Camera calibration", frame)
