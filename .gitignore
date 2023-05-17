@@ -1,4 +1,5 @@
 .idea/
+__pycache__/
 calibration/
 *.mp4
 *.svg
