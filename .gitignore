@@ -1,1 +1,4 @@
-.idea
+.idea/
+calibration/
+*.mp4
+*.svg
